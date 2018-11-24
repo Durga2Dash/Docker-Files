@@ -2,7 +2,7 @@ FROM ubuntu:latest
 MAINTAINER Murali Dhandapani <muralindia@gmail.com>
 
 # Update and Install Java openjdk maven git lynx(optional)
-RUN apt-get -y update && apt-get install -y curl wget openjdk-7-jdk  maven git lynx
+RUN apt-get -y update && apt-get install -y curl wget openjdk-8-jdk  maven git lynx
 
 # Create directory for Tomcat
 RUN mkdir /usr/local/tomcat
