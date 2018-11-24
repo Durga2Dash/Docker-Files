@@ -1,8 +1,8 @@
 FROM ubuntu:latest
-MAINTAINER Arjun Venkatesh <v.arjunyadav@gmail.com>
+MAINTAINER Murali Dhandapani <muralindia@gmail.com>
 
-# Update and Install Java openjdk
-RUN apt-get -y update && apt-get install -y curl wget openjdk-8-jdk
+# Update and Install Java openjdk maven git lynx(optional)
+RUN apt-get -y update && apt-get install -y curl wget openjdk-7-jdk  maven git lynx
 
 # Create directory for Tomcat
 RUN mkdir /usr/local/tomcat
@@ -19,11 +19,8 @@ RUN cp -Rv /tmp/apache-tomcat-8.0.53/* /usr/local/tomcat/
 # Expose port 8080 of the container
 EXPOSE 8080
 
-# Updating and Install Maven and git
-RUN apt-get -y update && apt-get install -y maven git
-
 # Cloning Java application from github
-RUN git clone https://github.com/arjunyadav123/registration-login-java-xml-maven-jsp-mysql.git /tmp/project
+RUN git clone https://github.com/muralindia/registration-login-java-xml-maven-jsp-mysql.git /tmp/project
 
 # Working directory for packaging Java application
 WORKDIR /tmp/project
@@ -36,4 +33,3 @@ RUN cp /tmp/project/target/account-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ap
 
 # Starting tomcat
 CMD /usr/local/tomcat/bin/catalina.sh run
-
